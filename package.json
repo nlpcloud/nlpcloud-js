@@ -1,8 +1,8 @@
 {
   "name": "nlpcloud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.js client for the NLP Cloud API. NLP Cloud serves all the spaCy pre-trained models, and your own custom models, through a RESTful API ready for production.\n\nMore details here: https://nlpcloud.io\n\nDocumentation: https://docs.nlpcloud.io",
-  "main": "nlpcloud.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/nlpcloud/nlpcloud-js/issues"
   },
-  "homepage": "https://github.com/nlpcloud/nlpcloud-js#readme"
+  "homepage": "https://github.com/nlpcloud/nlpcloud-js#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
