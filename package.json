@@ -1,8 +1,8 @@
 {
   "name": "nlpcloud",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "Node.js client for the NLP Cloud API. NLP Cloud serves all the spaCy pre-trained models, and your own custom models, through a RESTful API ready for production.\n\nMore details here: https://nlpcloud.io\n\nDocumentation: https://docs.nlpcloud.io",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
