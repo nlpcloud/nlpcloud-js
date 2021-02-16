@@ -44,7 +44,7 @@ And a full example that uses your own custom model `7894`:
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient('en_core_web_sm','4eC39HqLyjWDarjtT1zdp7dc')
+const client = new NLPCloudClient('custom_model/7894','4eC39HqLyjWDarjtT1zdp7dc')
 
 client.entities("John Doe is a Go Developer at Google")
   .then(function (response) {
