@@ -115,17 +115,17 @@ client.dependencies("<Your block of text>")
 
 ### Sentence Dependencies Endpoint
 
-Call the `sentence_dependencies()` method and pass a block of text made up of several sentencies you want to perform POS + arcs on.
+Call the `sentenceDependencies()` method and pass a block of text made up of several sentencies you want to perform POS + arcs on.
 
 ```js
-client.sentence_dependencies("<Your block of text>")
+client.sentenceDependencies("<Your block of text>")
 ```
 
 ### Library Versions Endpoint
 
-Call the `lib_versions()` method to know the versions of the libraries used behind the hood with the model (for example the spaCy version used).
+Call the `libVersions()` method to know the versions of the libraries used behind the hood with the model (for example the spaCy version used).
 
 ```js
-client.lib_versions()
+client.libVersions()
 ```
 
