@@ -2,7 +2,9 @@
 
 This is a Node.js client for the NLP Cloud API: https://docs.nlpcloud.io
 
-NLP Cloud serves all the spaCy pre-trained models, and your own custom models, through a RESTful API, so it's easy for you to use them in production.
+NLP Cloud serves high performance pre-trained models for NER, sentiment-analysis, classification, summarization, question answering, and POS tagging, ready for production, served through a REST API. 
+
+Pre-trained models are the spaCy models and some transformers-based models from Hugging Face. You can also deploy your own spaCy models.
 
 If you face an issue, don't hesitate to raise it as a Github issue. Thanks!
 
@@ -22,12 +24,12 @@ In case of success, results are contained in `response.data`. In case of failure
 
 ## Examples
 
-Here is a full example that uses the `en_core_web_sm` model, with a fake token:
+Here is a full example that performs Named Entity Recognition (NER) using spaCy's `en_core_web_lg` model, with a fake token:
 
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient('en_core_web_sm','4eC39HqLyjWDarjtT1zdp7dc')
+const client = new NLPCloudClient('en_core_web_lg','4eC39HqLyjWDarjtT1zdp7dc')
 
 client.entities("John Doe is a Go Developer at Google")
   .then(function (response) {
@@ -85,9 +87,9 @@ A json object is returned. Here is what it could look like:
 
 ### Client Initialization
 
-Pass the spaCy model you want to use and the NLP Cloud token to the client during initialization.
+Pass the model you want to use and the NLP Cloud token to the client during initialization.
 
-The spaCy model can either be a spaCy pretrained model like `en_core_web_sm`, `fr_core_news_lg`... but also one of your custom spaCy models using `custom_model/<model id>` (e.g. `custom_model/2568`).
+The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom spaCy models using `custom_model/<model id>` (e.g. `custom_model/2568`).
 
 Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.io/home/token).
 
@@ -103,6 +105,47 @@ Call the `entities()` method and pass the text you want to perform named entity 
 
 ```js
 client.entities("<Your block of text>")
+```
+
+### Classification Endpoint
+
+Call the `classification()` method and pass 3 arguments:
+
+1. The text you want to classify, as a string
+1. The candidate labels for your text, as an array of strings
+1. Whether the classification should be multi-class or not, as a boolean
+
+```js
+client.classification("<Your block of text>", ["label 1", "label 2", "..."], true|false)
+```
+
+### Sentiment Analysis Endpoint
+
+Call the `sentiment()` method and pass the text you want to analyze the sentiment of:
+
+```js
+client.sentiment("<Your block of text>")
+```
+
+### Question Answering Endpoint
+
+Call the `question()` method and pass the following:
+
+1. A context that the model will use to try to answer your question
+1. Your question
+
+```js
+client.question("<Your context>", "<Your question>")
+```
+
+### Summarization Endpoint
+
+Call the `summarization()` method and pass the text you want to summarize.
+
+**Note that your block of text should not exceed 1024 words, otherwise you will get an error. Also note that this model works best for blocks of text between 56 and 142 words.**
+
+```js
+client.summarization("<Your text to summarize>")
 ```
 
 ### Dependencies Endpoint
