@@ -11,29 +11,67 @@ class Client {
     this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
   }
 
-  _apiPost(endpoint, userInput) {
+  entities(text) {
     const payload = {
-      'text': userInput
+      'text': text
     };
 
-    return axios.post(this.rootURL + '/' + endpoint, payload, { headers: this.headers })
+    return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
-  _apiGet(endpoint) {
-    return axios.get(this.rootURL + '/' + endpoint, { headers: this.headers })
+  classification(text, labels, multiClass) {
+    const payload = {
+      'text': text,
+      'labels': labels,
+      'multiClass': multiClass
+    };
+
+    return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
   }
 
-  entities(userInput) {
-    return this._apiPost('entities', userInput)
+  sentiment(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
   }
-  dependencies(userInput) {
-    return this._apiPost('dependencies', userInput)
+
+  question(context, question) {
+    const payload = {
+      'context': context,
+      'question': question
+    };
+
+    return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
-  sentenceDependencies(userInput) {
-    return this._apiPost('sentence-dependencies', userInput)
+
+  summarization(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })
   }
+
+  dependencies(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'dependencies', payload, { headers: this.headers })
+  }
+
+  sentenceDependencies(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'sentence-dependencies', payload, { headers: this.headers })
+  }
+
   libVersions() {
-    return this._apiGet('version')
+    return axios.get(this.rootURL + '/' + 'versions', { headers: this.headers })
   }
 }
 
