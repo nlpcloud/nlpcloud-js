@@ -54,6 +54,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })
   }
 
+  translation(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'translation', payload, { headers: this.headers })
+  }
+
   dependencies(text) {
     const payload = {
       'text': text

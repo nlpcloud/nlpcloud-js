@@ -148,6 +148,14 @@ Call the `summarization()` method and pass the text you want to summarize.
 client.summarization("<Your text to summarize>")
 ```
 
+### Translation Endpoint
+
+Call the `translation()` method and pass the text you want to translate.
+
+```js
+client.translation("<Your text to translate>")
+```
+
 ### Dependencies Endpoint
 
 Call the `dependencies()` method and pass the text you want to perform part of speech tagging (POS) + arcs on.

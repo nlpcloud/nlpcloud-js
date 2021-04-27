@@ -1,6 +1,6 @@
 {
   "name": "nlpcloud",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Node.js client for the NLP Cloud API. NLP Cloud serves high performance pre-trained and custom models for NER, sentiment-analysis, classification, summarization, question answering, and POS tagging, ready for production, served through a REST API.\n\nMore details here: https://nlpcloud.io\n\nDocumentation: https://docs.nlpcloud.io",
   "main": "index.js",
   "scripts": {
