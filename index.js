@@ -6,7 +6,8 @@ const API_VERSION = 'v1'
 class Client {
   constructor(model, token) {
     this.headers = {
-      'Authorization': 'Token ' + token
+      'Authorization': 'Token ' + token,
+      'User-Agent': "nlploud-javascript-client"
     }
     this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
   }
