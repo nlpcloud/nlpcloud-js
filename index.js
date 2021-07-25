@@ -4,12 +4,17 @@ const BASE_URL = 'https://api.nlpcloud.io'
 const API_VERSION = 'v1'
 
 class Client {
-  constructor(model, token) {
+  constructor(model, token, gpu = false) {
     this.headers = {
       'Authorization': 'Token ' + token,
       'User-Agent': "nlploud-javascript-client"
     }
-    this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
+
+    if (gpu) {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + model
+    } else {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
+    }
   }
 
   entities(text) {
