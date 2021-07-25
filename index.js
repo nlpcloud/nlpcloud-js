@@ -68,6 +68,22 @@ class Client {
     return axios.post(this.rootURL + '/' + 'translation', payload, { headers: this.headers })
   }
 
+  langdetection(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'langdetection', payload, { headers: this.headers })
+  }
+
+  tokens(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'tokens', payload, { headers: this.headers })
+  }
+
   dependencies(text) {
     const payload = {
       'text': text
