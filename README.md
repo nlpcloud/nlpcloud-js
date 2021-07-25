@@ -2,7 +2,7 @@
 
 This is a Node.js client for the NLP Cloud API: https://docs.nlpcloud.io
 
-NLP Cloud serves high performance pre-trained models for NER, sentiment-analysis, classification, summarization, question answering, and POS tagging, ready for production, served through a REST API. 
+NLP Cloud serves high performance pre-trained for NER, sentiment-analysis, classification, summarization, text generation, question answering, machine translation, language detection, tokenization, POS tagging, and dependency parsing. It is ready for production, served through a REST API. 
 
 Pre-trained models are the spaCy models and some transformers-based models from Hugging Face. You can also deploy your own transformers-based models, or spaCy models.
 
@@ -96,7 +96,15 @@ Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.io/
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient('en_core_web_sm','4eC39HqLyjWDarjtT1zdp7dc')
+const client = new NLPCloudClient('<model>','<your token>')
+```
+
+If you want to use a GPU, pass `gpu = true`.
+
+```js
+const NLPCloudClient = require('nlpcloud');
+
+const client = new NLPCloudClient("<model>", "<your token>", gpu = true)
 ```
 
 ### Entities Endpoint
@@ -142,8 +150,6 @@ client.question("<Your context>", "<Your question>")
 
 Call the `summarization()` method and pass the text you want to summarize.
 
-**Note that your block of text should not exceed 1024 words, otherwise you will get an error. Also note that this model works best for blocks of text between 56 and 142 words.**
-
 ```js
 client.summarization("<Your text to summarize>")
 ```
@@ -154,6 +160,22 @@ Call the `translation()` method and pass the text you want to translate.
 
 ```js
 client.translation("<Your text to translate>")
+```
+
+### Language Detection Endpoint
+
+Call the `langdetection()` method and pass the text you want to analyze in order to detect the languages.
+
+```js
+client.langdetection("<The text you want to analyze>")
+```
+
+### Tokenization Endpoint
+
+Call the `tokens()` method and pass the text you want to tokenize.
+
+```js
+client.tokens("<Your block of text>")
 ```
 
 ### Dependencies Endpoint
