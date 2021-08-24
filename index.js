@@ -7,7 +7,7 @@ class Client {
   constructor(model, token, gpu = false) {
     this.headers = {
       'Authorization': 'Token ' + token,
-      'User-Agent': "nlploud-javascript-client"
+      'User-Agent': 'nlpcloud-javascript-client'
     }
 
     if (gpu) {
