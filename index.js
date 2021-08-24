@@ -25,7 +25,7 @@ class Client {
     return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
-  classification(text, labels, multiClass) {
+  classification(text, labels, multiClass = null) {
     const payload = {
       'text': text,
       'labels': labels,
