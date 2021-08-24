@@ -29,7 +29,7 @@ class Client {
     const payload = {
       'text': text,
       'labels': labels,
-      'multiClass': multiClass
+      'multi_class': multiClass
     };
 
     return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
