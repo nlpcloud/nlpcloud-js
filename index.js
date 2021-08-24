@@ -35,6 +35,26 @@ class Client {
     return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
   }
 
+  generation(text, minLength = null, maxLength = null, lengthNoInput = null,
+    endSequence = null, removeInput = null, topK = null, topP = null,
+    temperature = null, repetitionPenalty = null, lengthPenalty = null) {
+    const payload = {
+      'text': text,
+      'min_length': minLength,
+      'max_length': maxLength,
+      'length_no_input': lengthNoInput,
+      'end_sequence': endSequence,
+      'remove_input': removeInput,
+      'top_k': topK,
+      'top_p': topP,
+      'temperature': temperature,
+      'repetition_penalty': repetitionPenalty,
+      'length_penalty': lengthPenalty
+    };
+
+    return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
+  }
+
   sentiment(text) {
     const payload = {
       'text': text
