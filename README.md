@@ -117,14 +117,34 @@ client.entities("<Your block of text>")
 
 ### Classification Endpoint
 
-Call the `classification()` method and pass 3 arguments:
+Call the `classification()` method and pass the following arguments:
 
 1. The text you want to classify, as a string
 1. The candidate labels for your text, as an array of strings
-1. Whether the classification should be multi-class or not, as a boolean
+1. (Optional) `multi_class` Whether the classification should be multi-class or not, as a boolean
 
 ```js
-client.classification("<Your block of text>", ["label 1", "label 2", "..."], true|false)
+client.classification("<Your block of text>", ["label 1", "label 2", "..."])
+```
+
+### Text Generation Endpoint
+
+Call the `generation()` method and pass the following arguments:
+
+1. The block of text that starts the generated text, as a string. 1200 tokens maximum.
+1. (Optional) `minLength`: The minimum number of tokens that the generated text should contain, as an integer. The size of the generated text should not exceed 256 tokens on a CPU plan and 1024 tokens on GPU plan. If `lengthNoInput` is false, the size of the generated text is the difference between `minLength` and the length of your input text. If `lengthNoInput` is true, the size of the generated text simply is `minLength`. Defaults to 10.
+1. (Optional) `maxLength`: The maximum number of tokens that the generated text should contain, as an integer. The size of the generated text should not exceed 256 tokens on a CPU plan and 1024 tokens on GPU plan. If `lengthNoInput` is false, the size of the generated text is the difference between `maxLength` and the length of your input text. If `lengthNoInput` is true, the size of the generated text simply is `maxLength`. Defaults to 50.
+1. (Optional) `lengthNoInput`: Whether `minLength` and `maxLength` should not include the length of the input text, as a boolean. If false, `minLength` and `maxLength` include the length of the input text. If true, min_length and `maxLength` don't include the length of the input text. Defaults to false.
+1. (Optional) `endSequence`: A specific token that should be the end of the generated sequence, as a string. For example if could be `.` or `\n` or `###` or anything else below 10 characters.
+1. (Optional) `removeInput`: Whether you want to remove the input text form the result, as a boolean. Defaults to false.
+1. (Optional) `topK`: The number of highest probability vocabulary tokens to keep for top-k-filtering, as an integer. Maximum 1000 tokens. Defaults to 0.
+1. (Optional) `topP`: If set to float < 1, only the most probable tokens with probabilities that add up to top_p or higher are kept for generation. This is a float. Should be between 0 and 1. Defaults to 0.7.
+1. (Optional) `temperature`: The value used to module the next token probabilities, as a float. Should be between 0 and 1. Defaults to 1.
+1. (Optional) `repetitionPenalty`: The parameter for repetition penalty, as a float. 1.0 means no penalty. Defaults to 1.0.
+1. (Optional) `lengthPenalty`: Exponential penalty to the length, as a float. 1.0 means no penalty. Set to values < 1.0 in order to encourage the model to generate shorter sequences, or to a value > 1.0 in order to encourage the model to produce longer sequences. Defaults to 1.0.
+
+```js
+client.generation("<Your input text>")
 ```
 
 ### Sentiment Analysis Endpoint
