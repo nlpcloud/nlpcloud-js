@@ -36,8 +36,9 @@ class Client {
   }
 
   generation(text, minLength = null, maxLength = null, lengthNoInput = null,
-    endSequence = null, removeInput = null, topK = null, topP = null,
-    temperature = null, repetitionPenalty = null, lengthPenalty = null) {
+    endSequence = null, removeInput = null, doSample = null, numBeams = null, earlyStopping = null,
+    noRepeatNgramSize = null, numReturnSequences = null, topK = null, topP = null,
+    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null) {
     const payload = {
       'text': text,
       'min_length': minLength,
@@ -45,11 +46,17 @@ class Client {
       'length_no_input': lengthNoInput,
       'end_sequence': endSequence,
       'remove_input': removeInput,
+      'do_sample': doSample,
+      'num_beams': numBeams,
+      'early_stopping': earlyStopping,
+      'no_repeat_ngram_size': noRepeatNgramSize,
+      'num_return_sequences': numReturnSequences,
       'top_k': topK,
       'top_p': topP,
       'temperature': temperature,
       'repetition_penalty': repetitionPenalty,
-      'length_penalty': lengthPenalty
+      'length_penalty': lengthPenalty,
+      'bad_words': badWords
     };
 
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
