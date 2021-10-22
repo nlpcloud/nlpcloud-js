@@ -31,5 +31,6 @@
   },
   "devDependencies": {
     "typescript": "^4.4.3"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
