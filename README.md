@@ -1,6 +1,6 @@
 # Node.js Client For NLP Cloud
 
-This is a Node.js client for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
+This is the Node.js client for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
 
 NLP Cloud serves high performance pre-trained for NER, sentiment-analysis, classification, summarization, text generation, question answering, machine translation, language detection, tokenization, lemmatization, POS tagging, and dependency parsing. It is ready for production, served through a REST API.
 
@@ -89,7 +89,7 @@ A json object is returned. Here is what it could look like:
 
 Pass the model you want to use and the NLP Cloud token to the client during initialization.
 
-The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom transformers-based models, or spaCy models, using `custom_model/<model id>` (e.g. `custom_model/2568`).
+The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom models, using `custom_model/<model id>` (e.g. `custom_model/2568`).
 
 Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.io/home/token).
 
