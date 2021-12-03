@@ -99,12 +99,12 @@ const NLPCloudClient = require('nlpcloud');
 const client = new NLPCloudClient('<model>','<your token>')
 ```
 
-If you want to use a GPU, pass `gpu = true`.
+If you want to use a GPU, pass `true` as the 3rd argument.
 
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient("<model>", "<your token>", gpu = true)
+const client = new NLPCloudClient("<model>", "<your token>", true)
 ```
 
 ### Entities Endpoint
