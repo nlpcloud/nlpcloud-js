@@ -4,15 +4,22 @@ const BASE_URL = 'https://api.nlpcloud.io'
 const API_VERSION = 'v1'
 
 class Client {
-  constructor(model, token, gpu = false) {
+  constructor(model, token, gpu = false, lang = '') {
     this.headers = {
       'Authorization': 'Token ' + token,
       'User-Agent': 'nlpcloud-javascript-client'
     }
 
-    if (gpu) {
+    if (gpu && lang != '') {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + lang + '/' + model
+    }
+    else if (gpu && lang == '') {
       this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + model
-    } else {
+    }
+    else if (!gpu && lang != '') {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/' + lang + '/' + model
+    }
+    else {
       this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
     }
   }

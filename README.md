@@ -104,7 +104,15 @@ If you want to use a GPU, pass `true` as the 3rd argument.
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient("<model>", "<your token>", true)
+const client = new NLPCloudClient('<model>', '<your token>', true)
+```
+
+If you want to use the multilingual add-on in order to process non-English texts, set `lang='<your language code>'` as the 4th argument. For example, if you want to process French text, you should set `lang='fr'` as the 4th argument.
+
+```js
+const NLPCloudClient = require('nlpcloud');
+
+const client = new NLPCloudClient('<model>', '<your token>', false, '<your language code>')
 ```
 
 ### Entities Endpoint
