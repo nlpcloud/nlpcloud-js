@@ -1,6 +1,6 @@
 # Node.js Client For NLP Cloud
 
-This is a Node.js client for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
+This is the Node.js client for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
 
 NLP Cloud serves high performance pre-trained for NER, sentiment-analysis, classification, summarization, text generation, question answering, machine translation, language detection, tokenization, lemmatization, POS tagging, and dependency parsing. It is ready for production, served through a REST API.
 
@@ -89,7 +89,7 @@ A json object is returned. Here is what it could look like:
 
 Pass the model you want to use and the NLP Cloud token to the client during initialization.
 
-The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom transformers-based models, or spaCy models, using `custom_model/<model id>` (e.g. `custom_model/2568`).
+The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom models, using `custom_model/<model id>` (e.g. `custom_model/2568`).
 
 Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.io/home/token).
 
@@ -99,12 +99,20 @@ const NLPCloudClient = require('nlpcloud');
 const client = new NLPCloudClient('<model>','<your token>')
 ```
 
-If you want to use a GPU, pass `gpu = true`.
+If you want to use a GPU, pass `true` as the 3rd argument.
 
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient("<model>", "<your token>", gpu = true)
+const client = new NLPCloudClient('<model>', '<your token>', true)
+```
+
+If you want to use the multilingual add-on in order to process non-English texts, set `lang='<your language code>'` as the 4th argument. For example, if you want to process French text, you should set `lang='fr'` as the 4th argument.
+
+```js
+const NLPCloudClient = require('nlpcloud');
+
+const client = new NLPCloudClient('<model>', '<your token>', false, '<your language code>')
 ```
 
 ### Entities Endpoint
@@ -136,6 +144,7 @@ Call the `generation()` method and pass the following arguments:
 1. (Optional) `maxLength`: The maximum number of tokens that the generated text should contain, as an integer. The size of the generated text should not exceed 256 tokens on a CPU plan and 1024 tokens on GPU plan. If `lengthNoInput` is false, the size of the generated text is the difference between `maxLength` and the length of your input text. If `lengthNoInput` is true, the size of the generated text simply is `maxLength`. Defaults to 50.
 1. (Optional) `lengthNoInput`: Whether `minLength` and `maxLength` should not include the length of the input text, as a boolean. If false, `minLength` and `maxLength` include the length of the input text. If true, min_length and `maxLength` don't include the length of the input text. Defaults to false.
 1. (Optional) `endSequence`: A specific token that should be the end of the generated sequence, as a string. For example if could be `.` or `\n` or `###` or anything else below 10 characters.
+1. (Optional) `removeEndSequence`: Whether you want to remove the end sequence form the result, as a boolean. Defaults to false.
 1. (Optional) `removeInput`: Whether you want to remove the input text form the result, as a boolean. Defaults to false.
 1. (Optional) `doSample`: Whether or not to use sampling ; use greedy decoding otherwise, as a boolean. Defaults to true.
 1. (Optional) `numBeams`: Number of beams for beam search. 1 means no beam search. This is an integer. Defaults to 1.

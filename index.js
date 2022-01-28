@@ -4,15 +4,22 @@ const BASE_URL = 'https://api.nlpcloud.io'
 const API_VERSION = 'v1'
 
 class Client {
-  constructor(model, token, gpu = false) {
+  constructor(model, token, gpu = false, lang = '') {
     this.headers = {
       'Authorization': 'Token ' + token,
       'User-Agent': 'nlpcloud-javascript-client'
     }
 
-    if (gpu) {
+    if (gpu && lang != '') {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + lang + '/' + model
+    }
+    else if (gpu && lang == '') {
       this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + model
-    } else {
+    }
+    else if (!gpu && lang != '') {
+      this.rootURL = BASE_URL + '/' + API_VERSION + '/' + lang + '/' + model
+    }
+    else {
       this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
     }
   }
@@ -38,7 +45,7 @@ class Client {
   generation(text, minLength = null, maxLength = null, lengthNoInput = null,
     endSequence = null, removeInput = null, doSample = null, numBeams = null, earlyStopping = null,
     noRepeatNgramSize = null, numReturnSequences = null, topK = null, topP = null,
-    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null) {
+    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null, removeEndSequence = null) {
     const payload = {
       'text': text,
       'min_length': minLength,
@@ -56,7 +63,8 @@ class Client {
       'temperature': temperature,
       'repetition_penalty': repetitionPenalty,
       'length_penalty': lengthPenalty,
-      'bad_words': badWords
+      'bad_words': badWords,
+      'remove_end_sequence': removeEndSequence
     };
 
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
