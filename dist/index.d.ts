@@ -1,6 +1,6 @@
 export = Client;
 declare class Client {
-    constructor(model: string, token: string, gpu?: boolean);
+    constructor(model: string, token: string, gpu?: boolean, lang?: string);
     headers: {
         Authorization: string;
         'User-Agent': string;
@@ -21,11 +21,12 @@ declare class Client {
             scores: number[];
         };
     }>;
-    generation(text: string, minLength?: number, maxLength?: number, lengthNoInput?: boolean, endSequence?: string, removeInput?: boolean, doSample?: boolean, numBeams?: number, earlyStopping?: boolean, noRepeatNgramSize?: number, numReturnSequences?: number, topK?: number, topP?: number, temperature?: number, repetitionPenalty?: number, lengthPenalty?: number, badWords?: string[]): Promise<{
+    generation(text: string, minLength?: number, maxLength?: number, lengthNoInput?: boolean, endSequence?: string, removeInput?: boolean, doSample?: boolean, numBeams?: number, earlyStopping?: boolean, noRepeatNgramSize?: number, numReturnSequences?: number, topK?: number, topP?: number, temperature?: number, repetitionPenalty?: number, lengthPenalty?: number, badWords?: string[], removeEndSequence?: boolean): Promise<{
         status: number;
         statusText: string;
         data: {
             generated_text: string;
+            nb_generated_tokens: number;
         };
     }>;;
     sentiment(text: string): Promise<{
