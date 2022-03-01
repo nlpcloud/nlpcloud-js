@@ -111,6 +111,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'langdetection', payload, { headers: this.headers })
   }
 
+  semanticSimilarity(sentences) {
+    const payload = {
+      'sentences': sentences
+    };
+
+    return axios.post(this.rootURL + '/' + 'semantic-similarity', payload, { headers: this.headers })
+  }
+
   tokens(text) {
     const payload = {
       'text': text
@@ -133,6 +141,14 @@ class Client {
     };
 
     return axios.post(this.rootURL + '/' + 'sentence-dependencies', payload, { headers: this.headers })
+  }
+
+  embeddings(sentences) {
+    const payload = {
+      'sentences': sentences
+    };
+
+    return axios.post(this.rootURL + '/' + 'embeddings', payload, { headers: this.headers })
   }
 
   libVersions() {
