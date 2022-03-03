@@ -32,7 +32,7 @@ class Client {
     return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
-  classification(text, labels, multiClass = null) {
+  classification(text, labels = null, multiClass = null) {
     const payload = {
       'text': text,
       'labels': labels,
@@ -78,10 +78,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
   }
 
-  question(context, question) {
+  question(question, context = null) {
     const payload = {
-      'context': context,
-      'question': question
+      'question': question,
+      'context': context
     };
 
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
