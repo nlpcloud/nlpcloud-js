@@ -174,11 +174,11 @@ client.sentiment("<Your block of text>")
 
 Call the `question()` method and pass the following:
 
-1. A context that the model will use to try to answer your question
 1. Your question
+1. A context that the model will use to try to answer your question
 
 ```js
-client.question("<Your context>", "<Your question>")
+client.question("<Your question>","<Your context>")
 ```
 
 ### Summarization Endpoint
