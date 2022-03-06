@@ -189,6 +189,14 @@ Call the `summarization()` method and pass the text you want to summarize.
 client.summarization("<Your text to summarize>")
 ```
 
+### Paraphrasing Endpoint
+
+Call the `paraphrasing()` method and pass the text you want to paraphrase.
+
+```js
+client.paraphrasing("<Your text to paraphrase>")
+```
+
 ### Translation Endpoint
 
 Call the `translation()` method and pass the text you want to translate.
