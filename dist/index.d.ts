@@ -6,11 +6,20 @@ declare class Client {
         'User-Agent': string;
     };
     rootURL: string;
-    entities(text: string): Promise<{
+
+    adGeneration(keywords: string[]): Promise<{
         status: number;
         statusText: string;
         data: {
-            entities: { start: number; end: number; type: string; text: string }[];
+            generated_text: string;
+        };
+    }>;
+    chatbot(input: string, history: { input: string, response: string }[]): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            response: string;
+            history: { input: string, response: string }[];
         };
     }>;
     classification(text: string, labels: string[], multiClass?: boolean): Promise<{
@@ -21,6 +30,27 @@ declare class Client {
             scores: number[];
         };
     }>;
+    dependencies(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            words: { text: string, tag: string }[];
+        };
+    }>;
+    embeddings(text: string[]): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            score: number[][];
+        };
+    }>;
+    entities(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            entities: { start: number; end: number; type: string; text: string }[];
+        };
+    }>;
     generation(text: string, minLength?: number, maxLength?: number, lengthNoInput?: boolean, endSequence?: string, removeInput?: boolean, doSample?: boolean, numBeams?: number, earlyStopping?: boolean, noRepeatNgramSize?: number, numReturnSequences?: number, topK?: number, topP?: number, temperature?: number, repetitionPenalty?: number, lengthPenalty?: number, badWords?: string[], removeEndSequence?: boolean): Promise<{
         status: number;
         statusText: string;
@@ -28,12 +58,45 @@ declare class Client {
             generated_text: string;
             nb_generated_tokens: number;
         };
-    }>;;
-    sentiment(text: string): Promise<{
+    }>;
+    gsCorrection(text: string): Promise<{
         status: number;
         statusText: string;
         data: {
-            scored_labels: { label: string, score: number }[];
+            correction: string;
+        };
+    }>;
+    intentClassification(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            intent: string;
+        };
+    }>;
+    kwKpExtraction(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            keywords_and_keyphrases: string[];
+        };
+    }>;
+    langdetection(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            languages: any[];
+        };
+    }>;
+    libVersions(): Promise<{
+        status: number;
+        statusText: string;
+        data: any;
+    }>;
+    paraphrasing(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            paraphrased_text: string;
         };
     }>;
     question(context: string, question: string): Promise<{
@@ -44,6 +107,27 @@ declare class Client {
             score: number;
             start: number;
             end: number;
+        };
+    }>;
+    semanticSimilarity(text: string[]): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            score: number;
+        };
+    }>;
+    sentenceDependencies(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            sentence_dependencies: { sentence: string, dependencies: { words: { text: string, tag: string }[], arcs: { start: number, end: number, label: string, text: string, dir: string }[] } }[];
+        };
+    }>;
+    sentiment(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            scored_labels: { label: string, score: number }[];
         };
     }>;
     summarization(text: string): Promise<{
@@ -60,13 +144,6 @@ declare class Client {
             translation_text: string;
         };
     }>;
-    langdetection(text: string): Promise<{
-        status: number;
-        statusText: string;
-        data: {
-            languages: any[];
-        };
-    }>;
     tokens(text: string): Promise<{
         status: number;
         statusText: string;
@@ -74,23 +151,5 @@ declare class Client {
             tokens: { start: number, end: number, index: number, text: string, lemma: string, ws_after: boolean }[];
         };
     }>;
-    dependencies(text: string): Promise<{
-        status: number;
-        statusText: string;
-        data: {
-            words: { text: string, tag: string }[];
-        };
-    }>;
-    sentenceDependencies(text: string): Promise<{
-        status: number;
-        statusText: string;
-        data: {
-            sentence_dependencies: { sentence: string, dependencies: { words: { text: string, tag: string }[], arcs: { start: number, end: number, label: string, text: string, dir: string }[] } }[];
-        };
-    }>;
-    libVersions(): Promise<{
-        status: number;
-        statusText: string;
-        data: any;
-    }>;
+
 }
