@@ -25,6 +25,23 @@ class Client {
   }
 
 
+  adGeneration(keywords) {
+    const payload = {
+      'keywords': keywords
+    };
+
+    return axios.post(this.rootURL + '/' + 'ad-generation', payload, { headers: this.headers })
+  }
+
+  chatbot(input, history = null) {
+    const payload = {
+      'input': input,
+      'history': history
+    };
+
+    return axios.post(this.rootURL + '/' + 'chatbot', payload, { headers: this.headers })
+  }
+
   classification(text, labels = null, multiClass = null) {
     const payload = {
       'text': text,
@@ -88,6 +105,29 @@ class Client {
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
   }
 
+  gsCorrection(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'gs-correction', payload, { headers: this.headers })
+  }
+
+  intentClassification(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'intent-classification', payload, { headers: this.headers })
+  }
+
+  kwKpExtraction(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'kw-kp-extraction', payload, { headers: this.headers })
+  }
 
   langdetection(text) {
     const payload = {

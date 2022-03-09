@@ -115,12 +115,23 @@ const NLPCloudClient = require('nlpcloud');
 const client = new NLPCloudClient('<model>', '<your token>', false, '<your language code>')
 ```
 
-### Entities Endpoint
+### Ad Generation and Product Description Generation Endpoint
 
-Call the `entities()` method and pass the text you want to perform named entity recognition (NER) on.
+Call the `adGeneration()` method and pass the keywords you want to use to generate your ad or product description.
 
 ```js
-client.entities("<Your block of text>")
+client.adGeneration(["keyword 1", "keyword 2", ...])
+```
+
+### Chatbot/Conversational AI Endpoint
+
+Call the `chatbot()` method and pass the following arguments:
+
+1. Your input
+1. (Optional) `history` The history of your previous exchanges with the model
+
+```js
+client.chatbot("<Your input>")
 ```
 
 ### Classification Endpoint
@@ -132,10 +143,36 @@ Call the `classification()` method and pass the following arguments:
 1. (Optional) `multi_class` Whether the classification should be multi-class or not, as a boolean
 
 ```js
-client.classification("<Your block of text>", ["label 1", "label 2", "..."])
+client.classification("<Your block of text>", ["label 1", "label 2", ...])
 ```
 
-### Text Generation Endpoint
+### Dependencies Endpoint
+
+Call the `dependencies()` method and pass the text you want to perform part of speech tagging (POS) + arcs on.
+
+```js
+client.dependencies("<Your block of text>")
+```
+
+### Embeddings Endpoint
+
+Call the `embeddings()` method and pass an array of blocks of text that you want to extract embeddings from.
+
+```js
+client.embeddings(["<Text 1>", "<Text 2>", "<Text 3>", ...])
+```
+
+The above command returns a JSON object.
+
+### Entities Endpoint
+
+Call the `entities()` method and pass the text you want to perform named entity recognition (NER) on.
+
+```js
+client.entities("<Your block of text>")
+```
+
+### Generation Endpoint
 
 Call the `generation()` method and pass the following arguments:
 
@@ -162,12 +199,44 @@ Call the `generation()` method and pass the following arguments:
 client.generation("<Your input text>")
 ```
 
-### Sentiment Analysis Endpoint
+### Grammar and Spelling Correction Endpoint
 
-Call the `sentiment()` method and pass the text you want to analyze the sentiment of:
+Call the `gsCorrection()` method and pass the text you want to correct.
 
 ```js
-client.sentiment("<Your block of text>")
+client.gsCorrection("<The text you want to correct>")
+```
+
+### Intent Classification Endpoint
+
+Call the `intentClassification()` method and pass the text you want to analyze in order to detect the intent.
+
+```js
+client.intentClassification("<The text you want to analyze>")
+```
+
+### Keywords and Keyphrases Extraction Endpoint
+
+Call the `kwKpExtraction()` method and pass the text you want to extract keywords and keyphrases from.
+
+```js
+client.kwKpExtraction("<The text you want to analyze>")
+```
+
+### Language Detection Endpoint
+
+Call the `langdetection()` method and pass the text you want to analyze in order to detect the languages.
+
+```js
+client.langdetection("<The text you want to analyze>")
+```
+
+### Library Versions Endpoint
+
+Call the `libVersions()` method to know the versions of the libraries used behind the hood with the model (for example the PyTorch, TensorFlow, or spaCy version used).
+
+```js
+client.libVersions()
 ```
 
 ### Question Answering Endpoint
@@ -179,6 +248,32 @@ Call the `question()` method and pass the following:
 
 ```js
 client.question("<Your question>","<Your context>")
+```
+
+### Semantic Similarity Endpoint
+
+Call the `semanticSimilarity()` method and pass an array made up of 2 blocks of text that you want to compare.
+
+```python
+client.semanticSimilarity(["<Block of text 1>", "<Block of text 2>"])
+```
+
+The above command returns a JSON object.
+
+### Sentence Dependencies Endpoint
+
+Call the `sentenceDependencies()` method and pass a block of text made up of several sentencies you want to perform POS + arcs on.
+
+```js
+client.sentenceDependencies("<Your block of text>")
+```
+
+### Sentiment Analysis Endpoint
+
+Call the `sentiment()` method and pass the text you want to analyze the sentiment of:
+
+```js
+client.sentiment("<Your block of text>")
 ```
 
 ### Summarization Endpoint
@@ -197,32 +292,6 @@ Call the `paraphrasing()` method and pass the text you want to paraphrase.
 client.paraphrasing("<Your text to paraphrase>")
 ```
 
-### Translation Endpoint
-
-Call the `translation()` method and pass the text you want to translate.
-
-```js
-client.translation("<Your text to translate>")
-```
-
-### Language Detection Endpoint
-
-Call the `langdetection()` method and pass the text you want to analyze in order to detect the languages.
-
-```js
-client.langdetection("<The text you want to analyze>")
-```
-
-### Semantic Similarity Endpoint
-
-Call the `semanticSimilarity()` method and pass an array made up of 2 blocks of text that you want to compare.
-
-```python
-client.semanticSimilarity(["<Block of text 1>", "<Block of text 2>"])
-```
-
-The above command returns a JSON object.
-
 ### Tokenization Endpoint
 
 Call the `tokens()` method and pass the text you want to tokenize.
@@ -231,36 +300,10 @@ Call the `tokens()` method and pass the text you want to tokenize.
 client.tokens("<Your block of text>")
 ```
 
-### Dependencies Endpoint
+### Translation Endpoint
 
-Call the `dependencies()` method and pass the text you want to perform part of speech tagging (POS) + arcs on.
-
-```js
-client.dependencies("<Your block of text>")
-```
-
-### Sentence Dependencies Endpoint
-
-Call the `sentenceDependencies()` method and pass a block of text made up of several sentencies you want to perform POS + arcs on.
+Call the `translation()` method and pass the text you want to translate.
 
 ```js
-client.sentenceDependencies("<Your block of text>")
-```
-
-### Embeddings Endpoint
-
-Call the `embeddings()` method and pass an array of blocks of text that you want to extract embeddings from.
-
-```js
-client.embeddings(["<Text 1>", "<Text 2>", "<Tex 3>", ...])
-```
-
-The above command returns a JSON object.
-
-### Library Versions Endpoint
-
-Call the `libVersions()` method to know the versions of the libraries used behind the hood with the model (for example the PyTorch, TensorFlow, or spaCy version used).
-
-```js
-client.libVersions()
+client.translation("<Your text to translate>")
 ```
