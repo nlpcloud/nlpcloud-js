@@ -24,14 +24,6 @@ class Client {
     }
   }
 
-  entities(text, searchedEntity = null) {
-    const payload = {
-      'text': text,
-      'searchedEntity': searchedEntity
-    };
-
-    return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
-  }
 
   classification(text, labels = null, multiClass = null) {
     const payload = {
@@ -41,6 +33,31 @@ class Client {
     };
 
     return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
+  }
+
+  dependencies(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'dependencies', payload, { headers: this.headers })
+  }
+
+  embeddings(sentences) {
+    const payload = {
+      'sentences': sentences
+    };
+
+    return axios.post(this.rootURL + '/' + 'embeddings', payload, { headers: this.headers })
+  }
+
+  entities(text, searchedEntity = null) {
+    const payload = {
+      'text': text,
+      'searchedEntity': searchedEntity
+    };
+
+    return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
   generation(text, minLength = null, maxLength = null, lengthNoInput = null,
@@ -71,12 +88,26 @@ class Client {
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
   }
 
-  sentiment(text) {
+
+  langdetection(text) {
     const payload = {
       'text': text
     };
 
-    return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
+    return axios.post(this.rootURL + '/' + 'langdetection', payload, { headers: this.headers })
+  }
+
+
+  libVersions() {
+    return axios.get(this.rootURL + '/' + 'versions', { headers: this.headers })
+  }
+
+  paraphrasing(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'paraphrasing', payload, { headers: this.headers })
   }
 
   question(question, context = null) {
@@ -88,60 +119,12 @@ class Client {
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
 
-  summarization(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })
-  }
-
-  paraphrasing(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'paraphrasing', payload, { headers: this.headers })
-  }
-
-  translation(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'translation', payload, { headers: this.headers })
-  }
-
-  langdetection(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'langdetection', payload, { headers: this.headers })
-  }
-
   semanticSimilarity(sentences) {
     const payload = {
       'sentences': sentences
     };
 
     return axios.post(this.rootURL + '/' + 'semantic-similarity', payload, { headers: this.headers })
-  }
-
-  tokens(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'tokens', payload, { headers: this.headers })
-  }
-
-  dependencies(text) {
-    const payload = {
-      'text': text
-    };
-
-    return axios.post(this.rootURL + '/' + 'dependencies', payload, { headers: this.headers })
   }
 
   sentenceDependencies(text) {
@@ -152,17 +135,38 @@ class Client {
     return axios.post(this.rootURL + '/' + 'sentence-dependencies', payload, { headers: this.headers })
   }
 
-  embeddings(sentences) {
+  sentiment(text) {
     const payload = {
-      'sentences': sentences
+      'text': text
     };
 
-    return axios.post(this.rootURL + '/' + 'embeddings', payload, { headers: this.headers })
+    return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
   }
 
-  libVersions() {
-    return axios.get(this.rootURL + '/' + 'versions', { headers: this.headers })
+  summarization(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })
   }
+
+  tokens(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'tokens', payload, { headers: this.headers })
+  }
+
+  translation(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'translation', payload, { headers: this.headers })
+  }
+
 }
 
 module.exports = Client
