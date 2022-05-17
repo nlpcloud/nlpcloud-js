@@ -10,6 +10,10 @@ class Client {
       'User-Agent': 'nlpcloud-javascript-client'
     }
 
+    if (lang == 'en') {
+      lang = ''
+    }
+
     if (gpu && lang != '') {
       this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + lang + '/' + model
     }
