@@ -203,9 +203,11 @@ class Client {
     return axios.post(this.rootURL + '/' + 'tokens', payload, { headers: this.headers })
   }
 
-  translation(text) {
+  translation(text, source, target) {
     const payload = {
-      'text': text
+      'text': text,
+      'source': source,
+      'target': target
     };
 
     return axios.post(this.rootURL + '/' + 'translation', payload, { headers: this.headers })
