@@ -14,6 +14,13 @@ declare class Client {
             generated_text: string;
         };
     }>;
+    articleGeneration(title: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            generated_article: string;
+        };
+    }>;
     chatbot(input: string, history: { input: string, response: string }[]): Promise<{
         status: number;
         statusText: string;
@@ -28,6 +35,13 @@ declare class Client {
         data: {
             labels: string[];
             scores: number[];
+        };
+    }>;
+    codeGeneration(instruction: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            generated_code: string;
         };
     }>;
     dependencies(text: string): Promise<{

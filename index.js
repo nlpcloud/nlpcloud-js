@@ -37,6 +37,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'ad-generation', payload, { headers: this.headers })
   }
 
+  articleGeneration(title) {
+    const payload = {
+      'title': title
+    };
+
+    return axios.post(this.rootURL + '/' + 'article-generation', payload, { headers: this.headers })
+  }
+
   chatbot(input, history = null) {
     const payload = {
       'input': input,
@@ -54,6 +62,14 @@ class Client {
     };
 
     return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
+  }
+
+  codeGeneration(instruction) {
+    const payload = {
+      'instruction': instruction
+    };
+
+    return axios.post(this.rootURL + '/' + 'code-generation', payload, { headers: this.headers })
   }
 
   dependencies(text) {

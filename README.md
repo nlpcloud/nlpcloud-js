@@ -2,7 +2,7 @@
 
 This is the Node.js client (with Typescript types) for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
 
-NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, dialogue summarization, paraphrasing, intent classification, product description and ad generation, chatbot, grammar and spelling correction, keywords and keyphrases extraction, text generation, question answering, machine translation, language detection, semantic similarity, tokenization, POS tagging, embeddings, and dependency parsing. It is ready for production, served through a REST API.
+NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, dialogue summarization, paraphrasing, intent classification, product description and ad generation, chatbot, grammar and spelling correction, keywords and keyphrases extraction, text generation, blog post generation, text generation, question answering, machine translation, language detection, semantic similarity, tokenization, POS tagging, embeddings, and dependency parsing. It is ready for production, served through a REST API.
 
 You can either use the NLP Cloud pre-trained models, fine-tune your own models, or deploy your own models.
 
@@ -157,7 +157,15 @@ Call the `adGeneration()` method and pass the keywords you want to use to genera
 client.adGeneration(["keyword 1", "keyword 2", ...])
 ```
 
-### Chatbot/Conversational AI Endpoint
+### Blog Post Generation Endpoint
+
+Call the `articleGeneration()` method and pass the title of the article you want to generate.
+
+```js
+client.articleGeneration("<Your title>")
+```
+
+### Chatbot Endpoint
 
 Call the `chatbot()` method and pass the following arguments:
 
@@ -178,6 +186,14 @@ Call the `classification()` method and pass the following arguments:
 
 ```js
 client.classification("<Your block of text>", ["label 1", "label 2", ...])
+```
+
+### Code Generation Endpoint
+
+Call the `codeGeneration()` method and pass the instruction for the code you want to generate.
+
+```js
+client.codeGeneration("<Your instruction>")
 ```
 
 ### Dependencies Endpoint
