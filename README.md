@@ -170,6 +170,7 @@ client.articleGeneration("<Your title>")
 Call the `chatbot()` method and pass the following arguments:
 
 1. Your input
+1. (Optional) `context` A general context about the conversation
 1. (Optional) `history` The history of your previous exchanges with the model
 
 ```js

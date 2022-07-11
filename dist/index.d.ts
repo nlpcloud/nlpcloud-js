@@ -21,7 +21,7 @@ declare class Client {
             generated_article: string;
         };
     }>;
-    chatbot(input: string, history: { input: string, response: string }[]): Promise<{
+    chatbot(input: string, context: string, history: { input: string, response: string }[]): Promise<{
         status: number;
         statusText: string;
         data: {
