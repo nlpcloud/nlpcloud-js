@@ -232,7 +232,6 @@ Call the `generation()` method and pass the following arguments:
 1. (Optional) `maxLength`: Optional. The maximum number of tokens that the generated text should contain. 256 tokens maximum for GPT-J on CPU, 1024 tokens maximum for GPT-J and GPT-NeoX 20B on GPU, and 2048 tokens maximum for Fast GPT-J and Finetuned GPT-NeoX 20B on GPU. If `lengthNoInput` is false, the size of the generated text is the difference between `maxLength` and the length of your input text. If `lengthNoInput` is true, the size of the generated text simply is `maxLength`. Defaults to 50.
 1. (Optional) `lengthNoInput`: Whether `minLength` and `maxLength` should not include the length of the input text, as a boolean. If false, `minLength` and `maxLength` include the length of the input text. If true, min_length and `maxLength` don't include the length of the input text. Defaults to false.
 1. (Optional) `endSequence`: A specific token that should be the end of the generated sequence, as a string. For example if could be `.` or `\n` or `###` or anything else below 10 characters.
-1. (Optional) `removeEndSequence`: Optional. Whether you want to remove the `endSequence` string from the result. Defaults to false.
 1. (Optional) `removeInput`: Whether you want to remove the input text form the result, as a boolean. Defaults to false.
 1. (Optional) `doSample`: Whether or not to use sampling ; use greedy decoding otherwise, as a boolean. Defaults to true.
 1. (Optional) `numBeams`: Number of beams for beam search. 1 means no beam search. This is an integer. Defaults to 1.
@@ -245,6 +244,7 @@ Call the `generation()` method and pass the following arguments:
 1. (Optional) `repetitionPenalty`: The parameter for repetition penalty, as a float. 1.0 means no penalty. Defaults to 1.0.
 1. (Optional) `lengthPenalty`: Exponential penalty to the length, as a float. 1.0 means no penalty. Set to values < 1.0 in order to encourage the model to generate shorter sequences, or to a value > 1.0 in order to encourage the model to produce longer sequences. Defaults to 1.0.
 1. (Optional) `badWords`: List of tokens that are not allowed to be generated, as a list of strings. Defaults to null.
+1. (Optional) `removeEndSequence`: Optional. Whether you want to remove the `endSequence` string from the result. Defaults to false.
 
 ```js
 client.generation("<Your input text>")
