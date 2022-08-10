@@ -58,7 +58,7 @@ declare class Client {
             score: number[][];
         };
     }>;
-    entities(text: string): Promise<{
+    entities(text: string, searchedEntity?: string): Promise<{
         status: number;
         statusText: string;
         data: {
