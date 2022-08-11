@@ -92,7 +92,7 @@ class Client {
   entities(text, searchedEntity = null) {
     const payload = {
       'text': text,
-      'searchedEntity': searchedEntity
+      'searched_entity': searchedEntity
     };
 
     return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
