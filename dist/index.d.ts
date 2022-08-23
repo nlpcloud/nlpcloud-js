@@ -151,7 +151,7 @@ declare class Client {
             summary_text: string;
         };
     }>;
-    translation(text: string): Promise<{
+    translation(text: string, source: string, target: string): Promise<{
         status: number;
         statusText: string;
         data: {
