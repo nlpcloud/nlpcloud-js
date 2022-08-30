@@ -258,6 +258,14 @@ Call the `gsCorrection()` method and pass the text you want to correct.
 client.gsCorrection("<The text you want to correct>")
 ```
 
+### Image Generation Endpoint
+
+Call the `imageGeneration()` method and pass the text you want to use to generate your image.
+
+```js
+client.imageGeneration("<Your text instruction>")
+```
+
 ### Intent Classification Endpoint
 
 Call the `intentClassification()` method and pass the text you want to analyze in order to detect the intent.

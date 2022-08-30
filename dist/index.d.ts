@@ -80,6 +80,13 @@ declare class Client {
             correction: string;
         };
     }>;
+    imageGeneration(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        };
+    }>;
     intentClassification(text: string): Promise<{
         status: number;
         statusText: string;

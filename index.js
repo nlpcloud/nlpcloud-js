@@ -134,6 +134,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'gs-correction', payload, { headers: this.headers })
   }
 
+  imageGeneration(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'image-generation', payload, { headers: this.headers })
+  }
+
   intentClassification(text) {
     const payload = {
       'text': text
