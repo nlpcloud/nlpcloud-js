@@ -65,14 +65,32 @@ declare class Client {
             entities: { start: number; end: number; type: string; text: string }[];
         };
     }>;
-    generation(text: string, minLength?: number, maxLength?: number, lengthNoInput?: boolean, endSequence?: string, removeInput?: boolean, doSample?: boolean, numBeams?: number, earlyStopping?: boolean, noRepeatNgramSize?: number, numReturnSequences?: number, topK?: number, topP?: number, temperature?: number, repetitionPenalty?: number, lengthPenalty?: number, badWords?: string[], removeEndSequence?: boolean): Promise<{
-        status: number;
-        statusText: string;
-        data: {
-            generated_text: string;
-            nb_generated_tokens: number;
-        };
-    }>;
+    generation(text: string,
+        minLength?: number,
+        maxLength?: number,
+        lengthNoInput?: boolean,
+        endSequence?: string,
+        removeInput?: boolean,
+        doSample?: boolean,
+        numBeams?: number,
+        earlyStopping?: boolean,
+        noRepeatNgramSize?: number,
+        numReturnSequences?: number,
+        topK?: number,
+        topP?: number,
+        temperature?: number,
+        repetitionPenalty?: number,
+        lengthPenalty?: number,
+        badWords?: string[],
+        removeEndSequence?: boolean): Promise<{
+            status: number;
+            statusText: string;
+            data: {
+                generated_text: string;
+                nb_input_tokens: number;
+                nb_generated_tokens: number;
+            };
+        }>;
     gsCorrection(text: string): Promise<{
         status: number;
         statusText: string;
