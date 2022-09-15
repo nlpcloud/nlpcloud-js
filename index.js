@@ -45,6 +45,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'article-generation', payload, { headers: this.headers })
   }
 
+  asr(url) {
+    const payload = {
+      'url': url
+    };
+
+    return axios.post(this.rootURL + '/' + 'asr', payload, { headers: this.headers })
+  }
+
   chatbot(input, context = null, history = null) {
     const payload = {
       'input': input,

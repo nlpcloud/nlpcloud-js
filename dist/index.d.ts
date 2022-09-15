@@ -21,6 +21,13 @@ declare class Client {
             generated_article: string;
         };
     }>;
+    asr(url: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            text: string;
+        };
+    }>;
     chatbot(input: string, context: string, history: { input: string, response: string }[]): Promise<{
         status: number;
         statusText: string;
