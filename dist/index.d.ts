@@ -155,7 +155,14 @@ declare class Client {
             end: number;
         };
     }>;
-    semanticSimilarity(text: string[]): Promise<{
+    semanticSearch(text: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            search_results: { score: number, text: string }[];
+        };
+    }>;
+    semanticSimilarity(sentences: string[]): Promise<{
         status: number;
         statusText: string;
         data: {

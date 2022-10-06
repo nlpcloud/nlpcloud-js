@@ -2,7 +2,7 @@
 
 This is the Node.js client (with Typescript types) for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
 
-NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, dialogue summarization, paraphrasing, intent classification, product description and ad generation, chatbot, grammar and spelling correction, keywords and keyphrases extraction, text generation, image generation, blog post generation, text generation, question answering, automatic speech recognition, machine translation, language detection, semantic similarity, tokenization, POS tagging, embeddings, and dependency parsing. It is ready for production, served through a REST API.
+NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, dialogue summarization, paraphrasing, intent classification, product description and ad generation, chatbot, grammar and spelling correction, keywords and keyphrases extraction, text generation, image generation, blog post generation, text generation, question answering, automatic speech recognition, machine translation, language detection, semantic search, semantic similarity, tokenization, POS tagging, embeddings, and dependency parsing. It is ready for production, served through a REST API.
 
 You can either use the NLP Cloud pre-trained models, fine-tune your own models, or deploy your own models.
 
@@ -316,6 +316,16 @@ Call the `question()` method and pass the following:
 ```js
 client.question("<Your question>","<Your context>")
 ```
+
+### Semantic Search Endpoint
+
+Call the `semanticSearch()` method and pass your search query.
+
+```python
+client.semanticSearch("Your search query")
+```
+
+The above command returns a JSON object.
 
 ### Semantic Similarity Endpoint
 

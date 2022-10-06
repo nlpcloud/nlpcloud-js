@@ -196,6 +196,14 @@ class Client {
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
 
+  semanticSearch(text) {
+    const payload = {
+      'text': text
+    };
+
+    return axios.post(this.rootURL + '/' + 'semantic-search', payload, { headers: this.headers })
+  }
+
   semanticSimilarity(sentences) {
     const payload = {
       'sentences': sentences
