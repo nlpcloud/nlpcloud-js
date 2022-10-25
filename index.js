@@ -228,9 +228,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
   }
 
-  summarization(text) {
+  summarization(text, size = null) {
     const payload = {
-      'text': text
+      'text': text,
+      'size': size
     };
 
     return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })

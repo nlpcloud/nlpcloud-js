@@ -183,7 +183,7 @@ declare class Client {
             scored_labels: { label: string, score: number }[];
         };
     }>;
-    summarization(text: string): Promise<{
+    summarization(text: string, size?: string): Promise<{
         status: number;
         statusText: string;
         data: {
