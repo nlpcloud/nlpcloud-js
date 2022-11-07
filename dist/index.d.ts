@@ -26,6 +26,9 @@ declare class Client {
         statusText: string;
         data: {
             text: string;
+            duration: number;
+            language: string;
+            segments: { id: number, seek: number, start: number, end: number, text: string }
         };
     }>;
     chatbot(input: string, context: string, history: { input: string, response: string }[]): Promise<{
