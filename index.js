@@ -4,28 +4,31 @@ const BASE_URL = 'https://api.nlpcloud.io'
 const API_VERSION = 'v1'
 
 class Client {
-  constructor(model, token, gpu = false, lang = '') {
+  constructor(model, token, gpu = false, lang = '', asynchronous = false) {
     this.headers = {
       'Authorization': 'Token ' + token,
       'User-Agent': 'nlpcloud-javascript-client'
     }
 
+    this.rootURL = BASE_URL + '/' + API_VERSION + '/'
+
     if (lang == 'en') {
       lang = ''
     }
 
-    if (gpu && lang != '') {
-      this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + lang + '/' + model
+    if (gpu) {
+      this.root_url += 'gpu/' 
     }
-    else if (gpu && lang == '') {
-      this.rootURL = BASE_URL + '/' + API_VERSION + '/gpu/' + model
+
+    if (lang != '') {
+      this.root_url += lang + '/' 
     }
-    else if (!gpu && lang != '') {
-      this.rootURL = BASE_URL + '/' + API_VERSION + '/' + lang + '/' + model
+
+    if (asynchronous) {
+      this.root_url += "async/"
     }
-    else {
-      this.rootURL = BASE_URL + '/' + API_VERSION + '/' + model
-    }
+
+    this.root_url += model
   }
 
 
@@ -51,6 +54,10 @@ class Client {
     };
 
     return axios.post(this.rootURL + '/' + 'asr', payload, { headers: this.headers })
+  }
+
+  asyncResult(url) {
+    return axios.get(url, { headers: this.headers })
   }
 
   chatbot(input, context = null, history = null) {

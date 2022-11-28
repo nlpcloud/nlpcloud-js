@@ -1,6 +1,6 @@
 export = Client;
 declare class Client {
-    constructor(model: string, token: string, gpu?: boolean, lang?: string);
+    constructor(model: string, token: string, gpu?: boolean, lang?: string, asynchronous?: boolean);
     headers: {
         Authorization: string;
         'User-Agent': string;
@@ -29,6 +29,24 @@ declare class Client {
             duration: number;
             language: string;
             segments: { id: number, seek: number, start: number, end: number, text: string }
+        };
+    } | {
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        }
+    }>;
+    asyncResult(url: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            created_on: string;
+            finished_on: string;
+            request_body: string;
+            http_code: number;
+            error_detail: string;
+            content: string;
         };
     }>;
     chatbot(input: string, context: string, history: { input: string, response: string }[]): Promise<{
@@ -147,6 +165,12 @@ declare class Client {
         data: {
             paraphrased_text: string;
         };
+    } | {
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        }
     }>;
     question(context: string, question: string): Promise<{
         status: number;
@@ -192,6 +216,12 @@ declare class Client {
         data: {
             summary_text: string;
         };
+    } | {
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        }
     }>;
     translation(text: string, source: string, target: string): Promise<{
         status: number;

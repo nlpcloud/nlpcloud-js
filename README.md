@@ -149,6 +149,20 @@ const NLPCloudClient = require('nlpcloud');
 const client = new NLPCloudClient('<model>', '<your token>', false, '<your language code>')
 ```
 
+If you want to make asynchronous requests, pass `true` as the 4th argument.
+
+```js
+const NLPCloudClient = require('nlpcloud');
+
+const client = new NLPCloudClient("<model>", "<your token>", false, '<your language code>', true)
+```
+
+If you are making asynchronous requests, you will always receive a quick response containing a URL. You should then poll this URL with `asyncResult()` on a regular basis (every 10 seconds for example) in order to check if the result is available. Here is an example:
+
+```js
+client.asyncResult("https://api.nlpcloud.io/v1/get-async-result/21718218-42e8-4be9-a67f-b7e18e03b436")
+```
+
 ### Ad Generation and Product Description Generation Endpoint
 
 Call the `adGeneration()` method and pass the keywords you want to use to generate your ad or product description.
