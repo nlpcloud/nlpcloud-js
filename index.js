@@ -20,12 +20,12 @@ class Client {
       this.root_url += 'gpu/' 
     }
 
-    if (lang != '') {
-      this.root_url += lang + '/' 
-    }
-
     if (asynchronous) {
       this.root_url += "async/"
+    }
+
+    if (lang != '') {
+      this.root_url += lang + '/' 
     }
 
     this.root_url += model
