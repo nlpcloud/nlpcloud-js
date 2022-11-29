@@ -125,6 +125,12 @@ declare class Client {
         data: {
             correction: string;
         };
+    } | {
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        }
     }>;
     imageGeneration(text: string): Promise<{
         status: number;
