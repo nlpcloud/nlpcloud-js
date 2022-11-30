@@ -17,18 +17,18 @@ class Client {
     }
 
     if (gpu) {
-      this.root_url += 'gpu/' 
+      this.rootURL += 'gpu/'
     }
 
     if (asynchronous) {
-      this.root_url += "async/"
+      this.rootURL += "async/"
     }
 
     if (lang != '') {
-      this.root_url += lang + '/' 
+      this.rootURL += lang + '/'
     }
 
-    this.root_url += model
+    this.rootURL += model
   }
 
 
