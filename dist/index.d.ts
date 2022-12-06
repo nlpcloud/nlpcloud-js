@@ -21,7 +21,7 @@ declare class Client {
             generated_article: string;
         };
     }>;
-    asr(url: string): Promise<{
+    asr(url?: string, encodedFile?: string): Promise<{
         status: number;
         statusText: string;
         data: {
