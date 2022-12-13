@@ -48,10 +48,11 @@ class Client {
     return axios.post(this.rootURL + '/' + 'article-generation', payload, { headers: this.headers })
   }
 
-  asr(url = null, encodedFile= null) {
+  asr(url = null, encodedFile = null, inputLanguage = null) {
     const payload = {
       'url': url,
-      'encoded_file': encodedFile
+      'encoded_file': encodedFile,
+      'input_language': inputLanguage
     };
 
     return axios.post(this.rootURL + '/' + 'asr', payload, { headers: this.headers })
