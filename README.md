@@ -154,13 +154,13 @@ If you want to make asynchronous requests, pass `true` as the 4th argument.
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient("<model>", "<your token>", false, '<your language code>', true)
+const client = new NLPCloudClient('<model>', '<your token>', false, '<your language code>', true)
 ```
 
 If you are making asynchronous requests, you will always receive a quick response containing a URL. You should then poll this URL with `asyncResult()` on a regular basis (every 10 seconds for example) in order to check if the result is available. Here is an example:
 
 ```js
-client.asyncResult("https://api.nlpcloud.io/v1/get-async-result/21718218-42e8-4be9-a67f-b7e18e03b436")
+client.asyncResult('https://api.nlpcloud.io/v1/get-async-result/21718218-42e8-4be9-a67f-b7e18e03b436')
 ```
 
 ### Ad Generation and Product Description Generation Endpoint
@@ -168,7 +168,7 @@ client.asyncResult("https://api.nlpcloud.io/v1/get-async-result/21718218-42e8-4b
 Call the `adGeneration()` method and pass the keywords you want to use to generate your ad or product description.
 
 ```js
-client.adGeneration(["keyword 1", "keyword 2", ...])
+client.adGeneration(['keyword 1', 'keyword 2', ...])
 ```
 
 ### Automatic Speech Recognition (Speech to Text) Endpoint
@@ -176,7 +176,7 @@ client.adGeneration(["keyword 1", "keyword 2", ...])
 Call the `asr()` method and pass the url that hosts your audio or video file.
 
 ```js
-client.asr("Your url")
+client.asr('Your url')
 ```
 
 ### Blog Post Generation Endpoint
@@ -184,7 +184,7 @@ client.asr("Your url")
 Call the `articleGeneration()` method and pass the title of the article you want to generate.
 
 ```js
-client.articleGeneration("<Your title>")
+client.articleGeneration('<Your title>')
 ```
 
 ### Chatbot Endpoint
@@ -196,7 +196,7 @@ Call the `chatbot()` method and pass the following arguments:
 1. (Optional) `history` The history of your previous exchanges with the model
 
 ```js
-client.chatbot("<Your input>")
+client.chatbot('<Your input>')
 ```
 
 ### Classification Endpoint
@@ -208,7 +208,7 @@ Call the `classification()` method and pass the following arguments:
 1. (Optional) `multiClass` Whether the classification should be multi-class or not, as a boolean
 
 ```js
-client.classification("<Your block of text>", ["label 1", "label 2", ...])
+client.classification('<Your block of text>', ['label 1', 'label 2', ...])
 ```
 
 ### Code Generation Endpoint
@@ -216,7 +216,7 @@ client.classification("<Your block of text>", ["label 1", "label 2", ...])
 Call the `codeGeneration()` method and pass the instruction for the code you want to generate.
 
 ```js
-client.codeGeneration("<Your instruction>")
+client.codeGeneration('<Your instruction>')
 ```
 
 ### Dependencies Endpoint
@@ -224,7 +224,7 @@ client.codeGeneration("<Your instruction>")
 Call the `dependencies()` method and pass the text you want to perform part of speech tagging (POS) + arcs on.
 
 ```js
-client.dependencies("<Your block of text>")
+client.dependencies('<Your block of text>')
 ```
 
 ### Embeddings Endpoint
@@ -232,7 +232,7 @@ client.dependencies("<Your block of text>")
 Call the `embeddings()` method and pass an array of blocks of text that you want to extract embeddings from.
 
 ```js
-client.embeddings(["<Text 1>", "<Text 2>", "<Text 3>", ...])
+client.embeddings(['<Text 1>', '<Text 2>', '<Text 3>', ...])
 ```
 
 The above command returns a JSON object.
@@ -242,7 +242,7 @@ The above command returns a JSON object.
 Call the `entities()` method and pass the text you want to perform named entity recognition (NER) on.
 
 ```js
-client.entities("<Your block of text>")
+client.entities('<Your block of text>')
 ```
 
 ### Generation Endpoint
@@ -269,7 +269,7 @@ Call the `generation()` method and pass the following arguments:
 1. (Optional) `removeEndSequence`: Optional. Whether you want to remove the `endSequence` string from the result. Defaults to false.
 
 ```js
-client.generation("<Your input text>")
+client.generation('<Your input text>')
 ```
 
 ### Grammar and Spelling Correction Endpoint
@@ -277,7 +277,7 @@ client.generation("<Your input text>")
 Call the `gsCorrection()` method and pass the text you want to correct.
 
 ```js
-client.gsCorrection("<The text you want to correct>")
+client.gsCorrection('<The text you want to correct>')
 ```
 
 ### Image Generation Endpoint
@@ -285,7 +285,7 @@ client.gsCorrection("<The text you want to correct>")
 Call the `imageGeneration()` method and pass the text you want to use to generate your image.
 
 ```js
-client.imageGeneration("<Your text instruction>")
+client.imageGeneration('<Your text instruction>')
 ```
 
 ### Intent Classification Endpoint
@@ -293,7 +293,7 @@ client.imageGeneration("<Your text instruction>")
 Call the `intentClassification()` method and pass the text you want to analyze in order to detect the intent.
 
 ```js
-client.intentClassification("<The text you want to analyze>")
+client.intentClassification('<The text you want to analyze>')
 ```
 
 ### Keywords and Keyphrases Extraction Endpoint
@@ -301,7 +301,7 @@ client.intentClassification("<The text you want to analyze>")
 Call the `kwKpExtraction()` method and pass the text you want to extract keywords and keyphrases from.
 
 ```js
-client.kwKpExtraction("<The text you want to analyze>")
+client.kwKpExtraction('<The text you want to analyze>')
 ```
 
 ### Language Detection Endpoint
@@ -309,7 +309,7 @@ client.kwKpExtraction("<The text you want to analyze>")
 Call the `langdetection()` method and pass the text you want to analyze in order to detect the languages.
 
 ```js
-client.langdetection("<The text you want to analyze>")
+client.langdetection('<The text you want to analyze>')
 ```
 
 ### Library Versions Endpoint
@@ -328,7 +328,7 @@ Call the `question()` method and pass the following:
 1. A context that the model will use to try to answer your question
 
 ```js
-client.question("<Your question>","<Your context>")
+client.question('<Your question>','<Your context>')
 ```
 
 ### Semantic Search Endpoint
@@ -336,7 +336,7 @@ client.question("<Your question>","<Your context>")
 Call the `semanticSearch()` method and pass your search query.
 
 ```python
-client.semanticSearch("Your search query")
+client.semanticSearch('Your search query')
 ```
 
 The above command returns a JSON object.
@@ -346,7 +346,7 @@ The above command returns a JSON object.
 Call the `semanticSimilarity()` method and pass an array made up of 2 blocks of text that you want to compare.
 
 ```python
-client.semanticSimilarity(["<Block of text 1>", "<Block of text 2>"])
+client.semanticSimilarity(['<Block of text 1>', '<Block of text 2>'])
 ```
 
 The above command returns a JSON object.
@@ -356,7 +356,7 @@ The above command returns a JSON object.
 Call the `sentenceDependencies()` method and pass a block of text made up of several sentences you want to perform POS + arcs on.
 
 ```js
-client.sentenceDependencies("<Your block of text>")
+client.sentenceDependencies('<Your block of text>')
 ```
 
 ### Sentiment Analysis Endpoint
@@ -364,7 +364,7 @@ client.sentenceDependencies("<Your block of text>")
 Call the `sentiment()` method and pass the text you want to analyze the sentiment of:
 
 ```js
-client.sentiment("<Your block of text>")
+client.sentiment('<Your block of text>')
 ```
 
 ### Summarization Endpoint
@@ -372,7 +372,7 @@ client.sentiment("<Your block of text>")
 Call the `summarization()` method and pass the text you want to summarize.
 
 ```js
-client.summarization("<Your text to summarize>")
+client.summarization('<Your text to summarize>')
 ```
 
 ### Paraphrasing Endpoint
@@ -380,7 +380,7 @@ client.summarization("<Your text to summarize>")
 Call the `paraphrasing()` method and pass the text you want to paraphrase.
 
 ```js
-client.paraphrasing("<Your text to paraphrase>")
+client.paraphrasing('<Your text to paraphrase>')
 ```
 
 ### Tokenization Endpoint
@@ -388,7 +388,7 @@ client.paraphrasing("<Your text to paraphrase>")
 Call the `tokens()` method and pass the text you want to tokenize.
 
 ```js
-client.tokens("<Your block of text>")
+client.tokens('<Your block of text>')
 ```
 
 ### Translation Endpoint
@@ -396,5 +396,5 @@ client.tokens("<Your block of text>")
 Call the `translation()` method and pass the text you want to translate.
 
 ```js
-client.translation("<Your text to translate>")
+client.translation('<Your text to translate>')
 ```
