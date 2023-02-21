@@ -173,7 +173,11 @@ client.adGeneration(['keyword 1', 'keyword 2', ...])
 
 ### Automatic Speech Recognition (Speech to Text) Endpoint
 
-Call the `asr()` method and pass the url that hosts your audio or video file.
+Call the `asr()` method and pass the following arguments:
+
+1. (Optional: either this or the encoded file should be set) `url`: a URL where your audio or video file is hosted
+1. (Optional: either this or the url should be set) `encodedFile`: a base 64 encoded version of your file
+1. (Optional) `inputLanguage`: the language of your file as ISO code
 
 ```js
 client.asr('Your url')
