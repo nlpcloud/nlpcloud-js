@@ -205,9 +205,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
 
-  semanticSearch(text) {
+  semanticSearch(text, numResults = null) {
     const payload = {
-      'text': text
+      'text': text,
+      'num_results': numResults
     };
 
     return axios.post(this.rootURL + '/' + 'semantic-search', payload, { headers: this.headers })

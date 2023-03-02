@@ -188,7 +188,7 @@ declare class Client {
             end: number;
         };
     }>;
-    semanticSearch(text: string): Promise<{
+    semanticSearch(text: string, numResults: number): Promise<{
         status: number;
         statusText: string;
         data: {
