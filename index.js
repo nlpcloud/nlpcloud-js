@@ -118,7 +118,8 @@ class Client {
   generation(text, minLength = null, maxLength = null, lengthNoInput = null,
     endSequence = null, removeInput = null, doSample = null, numBeams = null, earlyStopping = null,
     noRepeatNgramSize = null, numReturnSequences = null, topK = null, topP = null,
-    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null, removeEndSequence = null) {
+    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null, removeEndSequence = null,
+    isInstruct= null) {
     const payload = {
       'text': text,
       'min_length': minLength,
@@ -137,7 +138,8 @@ class Client {
       'repetition_penalty': repetitionPenalty,
       'length_penalty': lengthPenalty,
       'bad_words': badWords,
-      'remove_end_sequence': removeEndSequence
+      'remove_end_sequence': removeEndSequence,
+      'is_instruct': isInstruct
     };
 
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
