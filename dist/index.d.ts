@@ -110,7 +110,8 @@ declare class Client {
         repetitionPenalty?: number,
         lengthPenalty?: number,
         badWords?: string[],
-        removeEndSequence?: boolean): Promise<{
+        removeEndSequence?: boolean,
+        isInstruct?: boolean): Promise<{
             status: number;
             statusText: string;
             data: {
