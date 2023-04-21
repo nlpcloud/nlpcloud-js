@@ -28,7 +28,7 @@ declare class Client {
             text: string;
             duration: number;
             language: string;
-            segments: { id: number, seek: number, start: number, end: number, text: string }
+            segments: { id: number, start: number, end: number, text: string }
         };
     } | {
         status: number;
