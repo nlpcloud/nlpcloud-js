@@ -371,6 +371,16 @@ Call the `sentiment()` method and pass the text you want to analyze the sentimen
 client.sentiment('<Your block of text>')
 ```
 
+### Speech Synthesis Endpoint
+
+Call the `speechSynthesis()` method and pass the text you want to convert to audio:
+
+```js
+client.speechSynthesis("<Your block of text>")
+```
+
+The above command returns a JSON object.
+
 ### Summarization Endpoint
 
 Call the `summarization()` method and pass the text you want to summarize.

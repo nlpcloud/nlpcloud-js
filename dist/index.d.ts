@@ -217,6 +217,13 @@ declare class Client {
             scored_labels: { label: string, score: number }[];
         };
     }>;
+    speechSynthesis(text: string, voice?: string): Promise<{
+        status: number;
+        statusText: string;
+        data: {
+            url: string;
+        };
+    }>;
     summarization(text: string, size?: string): Promise<{
         status: number;
         statusText: string;

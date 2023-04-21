@@ -240,6 +240,15 @@ class Client {
     return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })
   }
 
+  speechSynthesis(text, voice = null) {
+    const payload = {
+      'text': text,
+      'voice': voice
+    };
+
+    return axios.post(this.rootURL + '/' + 'speech-synthesis', payload, { headers: this.headers })
+  }
+
   summarization(text, size = null) {
     const payload = {
       'text': text,
