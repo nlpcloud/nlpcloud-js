@@ -85,7 +85,7 @@ Here is a full example that does the same thing, but on a French text:
 ```js
 const NLPCloudClient = require('nlpcloud');
 
-const client = new NLPCloudClient('bart-large-cnn','4eC39HqLyjWDarjtT1zdp7dc', true, 'fr')
+const client = new NLPCloudClient('bart-large-cnn','4eC39HqLyjWDarjtT1zdp7dc', true, 'fra_Latn')
 
 client.summarization(`Sur des images aériennes, prises la veille par un vol de surveillance 
   de la Nouvelle-Zélande, la côte d’une île est bordée d’arbres passés du vert 
@@ -141,7 +141,7 @@ const NLPCloudClient = require('nlpcloud');
 const client = new NLPCloudClient('<model>', '<your token>', true)
 ```
 
-If you want to use the multilingual add-on in order to process non-English texts, set `lang='<your language code>'` as the 4th argument. For example, if you want to process French text, you should set `lang='fr'` as the 4th argument.
+If you want to use the multilingual add-on in order to process non-English texts, set `lang='<your language code>'` as the 4th argument. For example, if you want to process French text, you should set `lang='fra_Latn'` as the 4th argument.
 
 ```js
 const NLPCloudClient = require('nlpcloud');
