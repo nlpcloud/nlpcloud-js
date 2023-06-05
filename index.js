@@ -40,14 +40,6 @@ class Client {
     return axios.post(this.rootURL + '/' + 'ad-generation', payload, { headers: this.headers })
   }
 
-  articleGeneration(title) {
-    const payload = {
-      'title': title
-    };
-
-    return axios.post(this.rootURL + '/' + 'article-generation', payload, { headers: this.headers })
-  }
-
   asr(url = null, encodedFile = null, inputLanguage = null) {
     const payload = {
       'url': url,

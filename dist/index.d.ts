@@ -14,13 +14,6 @@ declare class Client {
             generated_text: string;
         };
     }>;
-    articleGeneration(title: string): Promise<{
-        status: number;
-        statusText: string;
-        data: {
-            generated_article: string;
-        };
-    }>;
     asr(url?: string, encodedFile?: string, inputLanguage?: string): Promise<{
         status: number;
         statusText: string;

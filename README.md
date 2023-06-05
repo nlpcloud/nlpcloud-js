@@ -183,14 +183,6 @@ Call the `asr()` method and pass the following arguments:
 client.asr('Your url')
 ```
 
-### Blog Post Generation Endpoint
-
-Call the `articleGeneration()` method and pass the title of the article you want to generate.
-
-```js
-client.articleGeneration('<Your title>')
-```
-
 ### Chatbot Endpoint
 
 Call the `chatbot()` method and pass the following arguments:
