@@ -87,24 +87,17 @@ declare class Client {
         };
     }>;
     generation(text: string,
-        minLength?: number,
         maxLength?: number,
         lengthNoInput?: boolean,
         endSequence?: string,
         removeInput?: boolean,
-        doSample?: boolean,
         numBeams?: number,
-        earlyStopping?: boolean,
-        noRepeatNgramSize?: number,
         numReturnSequences?: number,
         topK?: number,
         topP?: number,
         temperature?: number,
         repetitionPenalty?: number,
-        lengthPenalty?: number,
-        badWords?: string[],
-        removeEndSequence?: boolean,
-        isInstruct?: boolean): Promise<{
+        removeEndSequence?: boolean): Promise<{
             status: number;
             statusText: string;
             data: {

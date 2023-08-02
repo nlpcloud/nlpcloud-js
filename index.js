@@ -110,31 +110,25 @@ class Client {
     return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
-  generation(text, minLength = null, maxLength = null, lengthNoInput = null,
-    endSequence = null, removeInput = null, doSample = null, numBeams = null, earlyStopping = null,
-    noRepeatNgramSize = null, numReturnSequences = null, topK = null, topP = null,
-    temperature = null, repetitionPenalty = null, lengthPenalty = null, badWords = null, removeEndSequence = null,
-    isInstruct= null) {
+  generation(text, maxLength = null, lengthNoInput = null,
+    endSequence = null, removeInput = null, numBeams = null,
+    numReturnSequences = null, topK = null, topP = null,
+    temperature = null, repetitionPenalty = null, badWords = null, 
+    removeEndSequence = null) {
     const payload = {
       'text': text,
-      'min_length': minLength,
       'max_length': maxLength,
       'length_no_input': lengthNoInput,
       'end_sequence': endSequence,
       'remove_input': removeInput,
-      'do_sample': doSample,
       'num_beams': numBeams,
-      'early_stopping': earlyStopping,
-      'no_repeat_ngram_size': noRepeatNgramSize,
       'num_return_sequences': numReturnSequences,
       'top_k': topK,
       'top_p': topP,
       'temperature': temperature,
       'repetition_penalty': repetitionPenalty,
-      'length_penalty': lengthPenalty,
       'bad_words': badWords,
-      'remove_end_sequence': removeEndSequence,
-      'is_instruct': isInstruct
+      'remove_end_sequence': removeEndSequence
     };
 
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
