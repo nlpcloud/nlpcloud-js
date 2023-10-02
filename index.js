@@ -4,7 +4,13 @@ const BASE_URL = 'https://api.nlpcloud.io'
 const API_VERSION = 'v1'
 
 class Client {
-  constructor(model, token, gpu = false, lang = '', asynchronous = false) {
+  constructor(params) {
+    var model = params.model
+    var token = params.token
+    var gpu = params.gpu ?? false
+    var lang = params.lang ?? ''
+    var async = params.async ?? false
+
     this.headers = {
       'Authorization': 'Token ' + token,
       'User-Agent': 'nlpcloud-javascript-client'
@@ -23,7 +29,7 @@ class Client {
       this.rootURL += 'gpu/'
     }
 
-    if (asynchronous) {
+    if (async) {
       this.rootURL += "async/"
     }
 
@@ -35,7 +41,9 @@ class Client {
   }
 
 
-  adGeneration(keywords) {
+  adGeneration(params) {
+    var keywords = params.keywords
+
     const payload = {
       'keywords': keywords
     };
@@ -43,7 +51,11 @@ class Client {
     return axios.post(this.rootURL + '/' + 'ad-generation', payload, { headers: this.headers })
   }
 
-  asr(url = null, encodedFile = null, inputLanguage = null) {
+  asr(params) {
+    var url = params.url ?? null
+    var encodedFile = params.encodedFile ?? null
+    var inputLanguage = params.inputLanguage ?? null
+
     const payload = {
       'url': url,
       'encoded_file': encodedFile,
@@ -53,11 +65,17 @@ class Client {
     return axios.post(this.rootURL + '/' + 'asr', payload, { headers: this.headers })
   }
 
-  asyncResult(url) {
+  asyncResult(params) {
+    var url = params.url
+
     return axios.get(url, { headers: this.headers })
   }
 
-  chatbot(input, context = null, history = null) {
+  chatbot(params) {
+    var input = params.input
+    var context = params.context ?? null
+    var history = params.history ?? null
+
     const payload = {
       'input': input,
       'context': context,
@@ -67,7 +85,11 @@ class Client {
     return axios.post(this.rootURL + '/' + 'chatbot', payload, { headers: this.headers })
   }
 
-  classification(text, labels = null, multiClass = null) {
+  classification(params) {
+    var text = params.text
+    var labels = params.labels ?? null
+    var multiClass = params.multiClass ?? null
+
     const payload = {
       'text': text,
       'labels': labels,
@@ -77,7 +99,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'classification', payload, { headers: this.headers })
   }
 
-  codeGeneration(instruction) {
+  codeGeneration(params) {
+    var instruction = params.instruction
+
     const payload = {
       'instruction': instruction
     };
@@ -85,7 +109,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'code-generation', payload, { headers: this.headers })
   }
 
-  dependencies(text) {
+  dependencies(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -93,7 +119,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'dependencies', payload, { headers: this.headers })
   }
 
-  embeddings(sentences) {
+  embeddings(params) {
+    var sentences = params.sentences
+
     const payload = {
       'sentences': sentences
     };
@@ -101,7 +129,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'embeddings', payload, { headers: this.headers })
   }
 
-  entities(text, searchedEntity = null) {
+  entities(params) {
+    var text = params.text
+    var searchedEntity = params.searchedEntity ?? null
+
     const payload = {
       'text': text,
       'searched_entity': searchedEntity
@@ -110,11 +141,21 @@ class Client {
     return axios.post(this.rootURL + '/' + 'entities', payload, { headers: this.headers })
   }
 
-  generation(text, maxLength = null, lengthNoInput = null,
-    endSequence = null, removeInput = null, numBeams = null,
-    numReturnSequences = null, topK = null, topP = null,
-    temperature = null, repetitionPenalty = null, badWords = null, 
-    removeEndSequence = null) {
+  generation(params) {
+    var text = params.text
+    var maxLength = params.maxLength ?? null
+    var lengthNoInput = params.lengthNoInput ?? null
+    var endSequence = params.endSequence ?? null
+    var removeInput = params.removeInput ?? null
+    var numBeams = params.numBeams ?? null
+    var numReturnSequences = params.numReturnSequences ?? null
+    var topK = params.topK ?? null
+    var topP = params.topP ?? null
+    var temperature = params.temperature ?? null
+    var repetitionPenalty = params.repetitionPenalty ?? null
+    var badWords = params.badWords ?? null
+    var removeEndSequence = params.removeEndSequence ?? null
+
     const payload = {
       'text': text,
       'max_length': maxLength,
@@ -134,7 +175,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'generation', payload, { headers: this.headers })
   }
 
-  gsCorrection(text) {
+  gsCorrection(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -142,7 +185,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'gs-correction', payload, { headers: this.headers })
   }
 
-  imageGeneration(text) {
+  imageGeneration(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -150,7 +195,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'image-generation', payload, { headers: this.headers })
   }
 
-  intentClassification(text) {
+  intentClassification(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -158,7 +205,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'intent-classification', payload, { headers: this.headers })
   }
 
-  kwKpExtraction(text) {
+  kwKpExtraction(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -166,7 +215,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'kw-kp-extraction', payload, { headers: this.headers })
   }
 
-  langdetection(text) {
+  langdetection(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -179,7 +230,9 @@ class Client {
     return axios.get(this.rootURL + '/' + 'versions', { headers: this.headers })
   }
 
-  paraphrasing(text) {
+  paraphrasing(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -188,6 +241,9 @@ class Client {
   }
 
   question(question, context = null) {
+    var question = params.question
+    var context = params.context ?? null
+
     const payload = {
       'question': question,
       'context': context
@@ -196,7 +252,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
 
-  semanticSearch(text, numResults = null) {
+  semanticSearch() {
+    var text = params.text
+    var numResults = params.numResults ?? null
+
     const payload = {
       'text': text,
       'num_results': numResults
@@ -205,7 +264,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'semantic-search', payload, { headers: this.headers })
   }
 
-  semanticSimilarity(sentences) {
+  semanticSimilarity(params) {
+    var sentences  = params.sentences
+
     const payload = {
       'sentences': sentences
     };
@@ -213,7 +274,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'semantic-similarity', payload, { headers: this.headers })
   }
 
-  sentenceDependencies(text) {
+  sentenceDependencies(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -221,7 +284,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'sentence-dependencies', payload, { headers: this.headers })
   }
 
-  sentiment(text) {
+  sentiment(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -230,6 +295,9 @@ class Client {
   }
 
   speechSynthesis(text, voice = null) {
+    var text = params.text
+    var voice = params.voice ?? null
+
     const payload = {
       'text': text,
       'voice': voice
@@ -238,7 +306,10 @@ class Client {
     return axios.post(this.rootURL + '/' + 'speech-synthesis', payload, { headers: this.headers })
   }
 
-  summarization(text, size = null) {
+  summarization(params) {
+    var text = params.text
+    var size = params.size ?? null
+
     const payload = {
       'text': text,
       'size': size
@@ -247,7 +318,9 @@ class Client {
     return axios.post(this.rootURL + '/' + 'summarization', payload, { headers: this.headers })
   }
 
-  tokens(text) {
+  tokens(params) {
+    var text = params.text
+
     const payload = {
       'text': text
     };
@@ -255,7 +328,11 @@ class Client {
     return axios.post(this.rootURL + '/' + 'tokens', payload, { headers: this.headers })
   }
 
-  translation(text, source, target) {
+  translation(params) {
+    var text = params.text
+    var source = params.source ?? null
+    var target = params.target
+
     const payload = {
       'text': text,
       'source': source,

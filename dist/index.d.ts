@@ -1,20 +1,33 @@
 export = Client;
 declare class Client {
-    constructor(model: string, token: string, gpu?: boolean, lang?: string, asynchronous?: boolean);
+    constructor(params: {
+        model: string;
+        token: string; 
+        gpu?: boolean; 
+        lang?: string; 
+        async?: boolean;
+    });
     headers: {
         Authorization: string;
         'User-Agent': string;
     };
     rootURL: string;
 
-    adGeneration(keywords: string[]): Promise<{
+    adGeneration(params: {
+        keywords: string[]
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             generated_text: string;
         };
     }>;
-    asr(url?: string, encodedFile?: string, inputLanguage?: string): Promise<{
+
+    asr(params: {
+        url?: string, 
+        encodedFile?: string, 
+        inputLanguage?: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -30,7 +43,10 @@ declare class Client {
             url: string;
         }
     }>;
-    asyncResult(url: string): Promise<{
+
+    asyncResult(params: {
+        url: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -42,7 +58,12 @@ declare class Client {
             content: string;
         };
     }>;
-    chatbot(input: string, context: string, history: { input: string, response: string }[]): Promise<{
+
+    chatbot(params: {
+        input: string, 
+        context?: string, 
+        history?: { input: string, response: string }[]
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -50,7 +71,12 @@ declare class Client {
             history: { input: string, response: string }[];
         };
     }>;
-    classification(text: string, labels: string[], multiClass?: boolean): Promise<{
+
+    classification(params: {
+        text: string,
+        labels?: string[],
+        multiClass?: boolean
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -58,35 +84,49 @@ declare class Client {
             scores: number[];
         };
     }>;
-    codeGeneration(instruction: string): Promise<{
+
+    codeGeneration(params: {
+        instruction: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             generated_code: string;
         };
     }>;
-    dependencies(text: string): Promise<{
+
+    dependencies(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             words: { text: string, tag: string }[];
         };
     }>;
-    embeddings(text: string[]): Promise<{
+
+    embeddings(params: {
+        sentences: string[]
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             score: number[][];
         };
     }>;
-    entities(text: string, searchedEntity?: string): Promise<{
+
+    entities(params: {
+        text: string, 
+        searchedEntity?: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             entities: { start: number; end: number; type: string; text: string }[];
         };
     }>;
-    generation(text: string,
+
+    generation(params: {text: string,
         maxLength?: number,
         lengthNoInput?: boolean,
         endSequence?: string,
@@ -97,7 +137,8 @@ declare class Client {
         topP?: number,
         temperature?: number,
         repetitionPenalty?: number,
-        removeEndSequence?: boolean): Promise<{
+        removeEndSequence?: boolean
+    }): Promise<{
             status: number;
             statusText: string;
             data: {
@@ -106,7 +147,10 @@ declare class Client {
                 nb_generated_tokens: number;
             };
         }>;
-    gsCorrection(text: string): Promise<{
+
+    gsCorrection(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -119,40 +163,56 @@ declare class Client {
             url: string;
         }
     }>;
-    imageGeneration(text: string): Promise<{
+
+    imageGeneration(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             url: string;
         };
     }>;
-    intentClassification(text: string): Promise<{
+
+    intentClassification(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             intent: string;
         };
     }>;
-    kwKpExtraction(text: string): Promise<{
+
+    kwKpExtraction(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             keywords_and_keyphrases: string[];
         };
     }>;
-    langdetection(text: string): Promise<{
+
+    langdetection(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             languages: any[];
         };
     }>;
+
     libVersions(): Promise<{
         status: number;
         statusText: string;
         data: any;
     }>;
-    paraphrasing(text: string): Promise<{
+
+    paraphrasing(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -165,7 +225,11 @@ declare class Client {
             url: string;
         }
     }>;
-    question(context: string, question: string): Promise<{
+
+    question(params: {
+        context?: string,
+        question: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -175,42 +239,62 @@ declare class Client {
             end: number;
         };
     }>;
-    semanticSearch(text: string, numResults: number): Promise<{
+
+    semanticSearch(params: {
+        text: string, 
+        numResults?: number
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             search_results: { score: number, text: string }[];
         };
     }>;
-    semanticSimilarity(sentences: string[]): Promise<{
+
+    semanticSimilarity(params: {
+        sentences: string[]
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             score: number;
         };
     }>;
-    sentenceDependencies(text: string): Promise<{
+
+    sentenceDependencies(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             sentence_dependencies: { sentence: string, dependencies: { words: { text: string, tag: string }[], arcs: { start: number, end: number, label: string, text: string, dir: string }[] } }[];
         };
     }>;
-    sentiment(text: string): Promise<{
+
+    sentiment(params: {
+        text: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             scored_labels: { label: string, score: number }[];
         };
     }>;
-    speechSynthesis(text: string, voice?: string): Promise<{
+    speechSynthesis(params: {
+        text: string,
+        voice?: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
             url: string;
         };
     }>;
-    summarization(text: string, size?: string): Promise<{
+
+    summarization(params: {
+        text: string,
+        size?: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
@@ -223,7 +307,12 @@ declare class Client {
             url: string;
         }
     }>;
-    translation(text: string, source: string, target: string): Promise<{
+
+    translation(params: {
+        text: string, 
+        source?: string, 
+        target: string
+    }): Promise<{
         status: number;
         statusText: string;
         data: {
