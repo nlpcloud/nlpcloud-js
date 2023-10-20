@@ -1,6 +1,6 @@
 # Node.js Client For NLP Cloud
 
-This is the Node.js client (with Typescript types) for the [NLP Cloud](https://nlpcloud.io) API. See the [documentation](https://docs.nlpcloud.io) for more details.
+This is the Node.js client (with Typescript types) for the [NLP Cloud](https://nlpcloud.com) API. See the [documentation](https://docs.nlpcloud.com) for more details.
 
 NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, dialogue summarization, paraphrasing, intent classification, product description and ad generation, chatbot, grammar and spelling correction, keywords and keyphrases extraction, text generation, image generation, text generation, question answering, automatic speech recognition, machine translation, language detection, semantic search, semantic similarity, tokenization, POS tagging, embeddings, and dependency parsing. It is ready for production, served through a REST API.
 
@@ -161,14 +161,6 @@ If you are making asynchronous requests, you will always receive a quick respons
 
 ```js
 client.asyncResult('https://api.nlpcloud.io/v1/get-async-result/21718218-42e8-4be9-a67f-b7e18e03b436')
-```
-
-### Ad Generation and Product Description Generation Endpoint
-
-Call the `adGeneration()` method and pass the keywords you want to use to generate your ad or product description.
-
-```js
-client.adGeneration({keywords:['keyword 1', 'keyword 2', ...]})
 ```
 
 ### Automatic Speech Recognition (Speech to Text) Endpoint
