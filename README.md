@@ -125,7 +125,7 @@ Pass the model you want to use and the NLP Cloud token to the client during init
 
 The model can either be a pretrained model like `en_core_web_lg`, `bart-large-mnli`... but also one of your custom models, using `custom_model/<model id>` (e.g. `custom_model/2568`).
 
-Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.io/home/token).
+Your token can be retrieved from your [NLP Cloud dashboard](https://nlpcloud.com/home/token).
 
 ```js
 const NLPCloudClient = require('nlpcloud');
