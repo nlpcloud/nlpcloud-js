@@ -57,7 +57,7 @@ declare class Client {
             error_detail: string;
             content: string;
         };
-    }>;
+    } | null >;
 
     chatbot(params: {
         input: string, 
