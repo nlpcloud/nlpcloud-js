@@ -240,7 +240,7 @@ class Client {
     return axios.post(this.rootURL + '/' + 'paraphrasing', payload, { headers: this.headers })
   }
 
-  question(question, context = null) {
+  question(params) {
     var question = params.question
     var context = params.context ?? null
 
@@ -252,7 +252,7 @@ class Client {
     return axios.post(this.rootURL + '/' + 'question', payload, { headers: this.headers })
   }
 
-  semanticSearch() {
+  semanticSearch(params) {
     var text = params.text
     var numResults = params.numResults ?? null
 
