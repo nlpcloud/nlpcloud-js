@@ -1,6 +1,6 @@
 {
   "name": "nlpcloud",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "NLP Cloud serves high performance pre-trained or custom models for NER, sentiment-analysis, classification, summarization, paraphrasing, text generation, image generation, code generation, question answering, automatic speech recognition, machine translation, language detection, semantic search, semantic similarity, tokenization, POS tagging, speech synthesis, embeddings, and dependency parsing. It is ready for production, served through a REST API.\n\nThis is the Node.js client for the NLP Cloud API.\n\nMore details here: https://nlpcloud.io\n\nDocumentation: https://docs.nlpcloud.io",
   "main": "index.js",
   "scripts": {

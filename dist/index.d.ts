@@ -111,7 +111,7 @@ declare class Client {
         status: number;
         statusText: string;
         data: {
-            score: number[][];
+            embeddings: number[][];
         };
     }>;
 
