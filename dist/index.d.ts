@@ -205,12 +205,6 @@ declare class Client {
         };
     }>;
 
-    libVersions(): Promise<{
-        status: number;
-        statusText: string;
-        data: any;
-    }>;
-
     paraphrasing(params: {
         text: string
     }): Promise<{

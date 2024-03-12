@@ -297,14 +297,6 @@ Call the `langdetection()` method and pass the text you want to analyze in order
 client.langdetection({text:'<The text you want to analyze>'})
 ```
 
-### Library Versions Endpoint
-
-Call the `libVersions()` method to know the versions of the libraries used behind the hood with the model (for example the PyTorch, TensorFlow, or spaCy version used).
-
-```js
-client.libVersions()
-```
-
 ### Question Answering Endpoint
 
 Call the `question()` method and pass the following:

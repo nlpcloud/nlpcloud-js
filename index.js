@@ -225,11 +225,6 @@ class Client {
     return axios.post(this.rootURL + '/' + 'langdetection', payload, { headers: this.headers })
   }
 
-
-  libVersions() {
-    return axios.get(this.rootURL + '/' + 'versions', { headers: this.headers })
-  }
-
   paraphrasing(params) {
     var text = params.text
 
