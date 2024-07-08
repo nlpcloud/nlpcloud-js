@@ -34,8 +34,8 @@ declare class Client {
             text: string;
             duration: number;
             language: string;
-            segments: Array<{ id: number, start: number, end: number, text: string }>;
-            words: Array<{ id: number, start: number, end: number, text: string, prob: number }>;
+            segments: { id: number, start: number, end: number, text: string }[];
+            words: { id: number, start: number, end: number, text: string, prob: number }[];
         };
     } | {
         status: number;
