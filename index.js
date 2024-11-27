@@ -281,9 +281,10 @@ class Client {
 
   sentiment(params) {
     var text = params.text
-
+    var target = params.target ?? null
     const payload = {
-      'text': text
+      'text': text,
+      'target': target
     };
 
     return axios.post(this.rootURL + '/' + 'sentiment', payload, { headers: this.headers })

@@ -302,7 +302,7 @@ client.langdetection({text:'<The text you want to analyze>'})
 Call the `question()` method and pass the following:
 
 1. Your question
-1. A context that the model will use to try to answer your question
+1. (Optional) A context that the model will use to try to answer your question
 
 ```js
 client.question({question:'<Your question>', context:'<Your context>'})
@@ -338,10 +338,13 @@ client.sentenceDependencies({text:'<Your block of text>'})
 
 ### Sentiment Analysis Endpoint
 
-Call the `sentiment()` method and pass the text you want to analyze the sentiment of:
+Call the `sentiment()` method and pass the following:
+
+1. The text you want to get the sentiment of
+1. (Optional) The target element that the sentiment should apply to
 
 ```js
-client.sentiment({text:'<Your block of text>'})
+client.sentiment({text:'<Your block of text>', target:'<Your target>'})
 ```
 
 ### Speech Synthesis Endpoint

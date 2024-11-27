@@ -267,7 +267,8 @@ declare class Client {
     }>;
 
     sentiment(params: {
-        text: string
+        text: string,
+        target?: string
     }): Promise<{
         status: number;
         statusText: string;
